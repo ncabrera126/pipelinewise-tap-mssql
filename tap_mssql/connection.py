@@ -36,6 +36,7 @@ class MSSQLConnection(pymssql.Connection):
             "database": config["database"],
             "charset": "utf8",
             "port": config.get("port", "1433"),
+            "conn_properties":"set transaction isolation level read uncommitted;"
         }
         conn = pymssql._mssql.connect(**args)
         super().__init__(conn, False, True)
